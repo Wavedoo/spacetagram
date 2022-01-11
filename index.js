@@ -1,9 +1,14 @@
 const API_TOKEN = "TfTsHtqDPttmSZcKm77S99loINsheU9QC02NcpcF";
 var display = document.getElementById("displayArea");
-//10 magic number
-//Maybe 31?
 var link = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&count=10`;
 getData(link);
+
+var randomButton = document.getElementById("randomButton");
+var dateButton = document.getElementById("dateButton");
+var likedButton = document.getElementById("likedButton");
+
+//Saves selections bar to easily remove and add it
+var searchBar = document.getElementById("searchBar");
 
 var start = document.getElementById("startDate");
 var end = document.getElementById("endDate");
@@ -14,25 +19,59 @@ var firstDay = "1995-06-16";
 start.setAttribute("max", today);
 end.setAttribute("max", today);
 
-
 var search = document.getElementById("search");
-/*Nope bad and annoying for the ser to use*/
+var clear = document.getElementById("clear");
 
-/*start.addEventListener("change", function() {
-    let days = 31;
-    let difference = days * 24 * 60 * 60 * 1000 + Date.parse(start.value);
-    let max = dateToParameter(difference);
-    end.setAttribute("max", max);
+document.body.removeChild(searchBar);
+
+var toTop = document.getElementById("toTop");
+
+randomButton.addEventListener("click", function(){
+    if(!randomButton.classList.contains("selected")){
+        randomButton.classList.add("selected");
+        dateButton.classList.remove("selected");
+        likedButton.classList.remove("selected");
+        //TODO: Change the objects that are shown.
+        clearArea(display);
+        window.addEventListener("scroll", infiniteScroll);
+        link = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&count=10`;
+        getData(link);
+        if(document.body.contains(searchBar)){
+            document.body.removeChild(searchBar);
+        }
+    }
+    
 });
 
-end.addEventListener("change", function() {
-    let days = 31;
-    let difference = days * 24 * 60 * 60 * 1000 - Date.parse(end.value);
-    let min = dateToParameter(difference);
-    end.setAttribute("min", min);
-});*/
+dateButton.addEventListener("click", function(){
+    if(!dateButton.classList.contains("selected")){
+        randomButton.classList.remove("selected");
+        dateButton.classList.add("selected");
+        likedButton.classList.remove("selected");
+        //TODO: Change the objects that are shown.
+        clearArea(display);
+        window.removeEventListener("scroll", infiniteScroll);
+        display.insertAdjacentElement("beforebegin", searchBar);
+    }
+    
+});
 
-search.onclick = function(){
+likedButton.addEventListener("click", function(){
+    if(!likedButton.classList.contains("selected")){
+        randomButton.classList.remove("selected");
+        dateButton.classList.remove("selected");
+        likedButton.classList.add("selected");
+        //TODO: Change the objects that are shown.
+        clearArea(display);
+        window.removeEventListener("scroll", infiniteScroll);
+        if(document.body.contains(searchBar)){
+            document.body.removeChild(searchBar);
+        }
+    }
+    
+});
+
+search.addEventListener("click", function(){
     var maxDays = 31;
     var defaultDays = 10;
     var maxDiff = maxDays * 24 * 60 * 60 * 1000;
@@ -63,13 +102,17 @@ search.onclick = function(){
         //TODO: ADD EVENTLISTENER FOR CHANGING DATE
     }
     getData(link);
-}
+});
 
-var clear = document.getElementById("clear");
 
 clear.addEventListener("click", function(){
     start.value = null;
     end.value = null;
+});
+
+toTop.addEventListener("click", function(){
+    //Add animation maybe?
+    window.scrollTo(scrollX, 0);
 });
 
 window.addEventListener("scroll", infiniteScroll);
@@ -122,6 +165,13 @@ function like(){
     }
 }
 
+function clearArea(area){
+    let child;
+    while(child = area.firstChild){
+        display.removeChild(child);
+    }
+}
+
 function getData(link){
     var display = document.getElementById("displayArea");
     // let oldArticle = document.getElementById().
@@ -130,7 +180,7 @@ function getData(link){
             let article = document.createElement("article");
             
             let title_element = document.createElement("h2");
-            let title_text = document.createTextNode(picture["title"]);
+            let title_text = document.createTextNode(decodeURI(picture["title"]));
             title_element.appendChild(title_text);
 
             let file_element;
@@ -140,14 +190,11 @@ function getData(link){
                 file_element.setAttribute("height", "350px");
             }else{
                 //VIDEO THUMBNAIL CLICK TO VIEW BLAH LAH BLAH
-                file_element = document.createElement("video");
+                file_element = document.createElement("iframe");
                 file_element.setAttribute("height", "350px");
-                file_element.setAttribute("controls", true);
-                let source = document.createElement("source"); 
-                source.setAttribute("src", picture['url']);
-                let file_text = document.createTextNode("Sorry video could not be loaded");
-                file_element.appendChild(source);
-                file_element.appendChild(file_text);
+                file_element.setAttribute("src", picture["url"]);
+                file_element.setAttribute("title", picture["title"]);
+
             }
 
 

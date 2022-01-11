@@ -1,0 +1,25 @@
+#title, #subtitle{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+.selectionBar{
+    height: 1em;
+    
+}
+.selections{
+    border-radius: 5px;
+    border-width: 0;
+    background-color: transparent;
+}
+.selections:hover{
+    cursor: pointer;
+    background-color: aqua;
+}
+.selected{
+    background-color: maroon;
+}
+article{
+    background-image: radial-gradient(#FFFFFF, #e2e2e2);
+    border-radius: 25px;
+}
