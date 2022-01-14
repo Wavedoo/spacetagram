@@ -1,25 +1,121 @@
+
+html{
+    background-color: rgb(123, 123, 180);
+    font-size: 16px;
+}
 #title, #subtitle{
     margin: 0;
     border: 0;
     padding: 0;
 }
-.selectionBar{
-    height: 1em;
+#subtitle{
+    font-size: 1em;
+}
+#selectionBar{
+    height: 3em;
+    border-radius: 1em;
+    border-color: black;
+    border-style: none;
+    margin: auto;
+    width: 100%;
+    background-color: rgb(192, 192, 231);;
     
 }
 .selections{
     border-radius: 5px;
-    border-width: 0;
+    border-width: 0.125em;
+    border-color: transparent;
     background-color: transparent;
+    font-size: 1.1em;
+    margin-left: 1em;
+    margin-right: 1em;
+
 }
 .selections:hover{
     cursor: pointer;
-    background-color: aqua;
+    border-color: black;
 }
 .selected{
-    background-color: maroon;
+    background-color: rgba(100,100,255,1);
 }
 article{
     background-image: radial-gradient(#FFFFFF, #e2e2e2);
     border-radius: 25px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+
+}
+article>h2{
+}
+article>img{
+    width: 95%;
+    max-width: 500px;
+    height: 100%;
+}
+article>p{
+    
+}
+/* #selectionsList*/
+ul{
+    list-style-type: none;
+    overflow: hidden;
+    margin: auto;
+    padding: 0;
+    width:fit-content;
+    border-radius: 2px;
+    border-style: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+li{
+    float: left;
+}
+
+
+#toTop{
+    position: fixed;
+    border-radius: 0.5em;
+    font-size: 1em;
+    border-radius: 1em;
+    top: 90%;
+    left: 3%;
+    height: 4em;
+    width: 10em;
+    box-shadow: none;
+    border: none;
+    background-color: rgba(150,150,255,1);
+}
+#toTop:hover{
+    background-color: rgba(100,100,255,1);
+    cursor: pointer;
+}
+#toTop:active{
+    background-color: rgba(50,50,255,1);
+}
+button{
+    padding: 0;
+    margin: 0;
+}
+.likes{
+    background-color: rgb(180, 0,0);
+    height: 3em;
+    width: 6em;
+    margin-bottom: 2em;
+    border-radius: 1em;
+    box-shadow: none;
+    border-style: none;
+}
+.likes:hover{
+    background-color: maroon;
+    cursor: pointer;
+}
+.likes:active{
+    background-color: rgb(90,0,0);
+}
+.modeExplanations{
+    font-size: 1.25em;
+    text-align: center;
 }

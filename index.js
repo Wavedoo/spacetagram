@@ -1,3 +1,4 @@
+//Inital setup
 const API_TOKEN = "TfTsHtqDPttmSZcKm77S99loINsheU9QC02NcpcF";
 var display = document.getElementById("displayArea");
 var link = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&count=10`;
@@ -6,6 +7,14 @@ getData(link);
 var randomButton = document.getElementById("randomButton");
 var dateButton = document.getElementById("dateButton");
 var likedButton = document.getElementById("likedButton");
+
+//Stores the different explanations for each mode as a p element for later
+var modeRandom = document.getElementById("modeRandom");
+var modeDates = document.getElementById("modeDates");
+var modeLiked = document.getElementById("modeLiked");
+
+document.body.removeChild(modeDates);
+document.body.removeChild(modeLiked);
 
 //Saves selections bar to easily remove and add it
 var searchBar = document.getElementById("searchBar");
@@ -26,6 +35,7 @@ document.body.removeChild(searchBar);
 
 var toTop = document.getElementById("toTop");
 
+
 randomButton.addEventListener("click", function(){
     if(!randomButton.classList.contains("selected")){
         randomButton.classList.add("selected");
@@ -36,9 +46,12 @@ randomButton.addEventListener("click", function(){
         window.addEventListener("scroll", infiniteScroll);
         link = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&count=10`;
         getData(link);
-        if(document.body.contains(searchBar)){
-            document.body.removeChild(searchBar);
-        }
+
+        display.insertAdjacentElement("beforebegin", modeRandom);
+
+        removeFromBody(searchBar);
+        removeFromBody(modeDates);
+        removeFromBody(modeLiked);
     }
     
 });
@@ -48,10 +61,14 @@ dateButton.addEventListener("click", function(){
         randomButton.classList.remove("selected");
         dateButton.classList.add("selected");
         likedButton.classList.remove("selected");
-        //TODO: Change the objects that are shown.
+
         clearArea(display);
         window.removeEventListener("scroll", infiniteScroll);
+        display.insertAdjacentElement("beforebegin", modeDates);
         display.insertAdjacentElement("beforebegin", searchBar);
+    
+        removeFromBody(modeRandom);
+        removeFromBody(modeLiked);
     }
     
 });
@@ -64,9 +81,11 @@ likedButton.addEventListener("click", function(){
         //TODO: Change the objects that are shown.
         clearArea(display);
         window.removeEventListener("scroll", infiniteScroll);
-        if(document.body.contains(searchBar)){
-            document.body.removeChild(searchBar);
-        }
+        display.insertAdjacentElement("beforebegin", modeLiked);
+
+        removeFromBody(searchBar);
+        removeFromBody(modeRandom);
+        removeFromBody(modeDates);
     }
     
 });
@@ -76,6 +95,7 @@ search.addEventListener("click", function(){
     var defaultDays = 10;
     var maxDiff = maxDays * 24 * 60 * 60 * 1000;
     var difference = defaultDays * 24 * 60 * 60 * 1000;
+    //TODO CHECK IF NO DATE IS PICKED AND RECOMMMEND THEY USE RANDOM IMAGES
     //Checks which dates have data
     if(start.value != "" && end.value != ""){
         if(Date.parse(start.value) > Date.parse(end.value)){
@@ -86,6 +106,8 @@ search.addEventListener("click", function(){
             end.value = dateToParameter(end_value);
             link = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&start_date=${start.value}&end_date=${end.value}`;
             window.alert("The end date has been automatically changed to " + end.value)
+        }else{
+            link = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&start_date=${start.value}&end_date=${end.value}`;
         }
     }else if(start.value != ""){
         let end_value = Date.parse(start.value) + difference;
@@ -226,6 +248,17 @@ function getData(link){
 
 
         });
+    }).fail(function(jqXHR, textStatus, error) {
+        let error_element = document.createElement("p");
+        error_text = document.createTextNode(error);
+        error_element.appendChild(error_text);
+        display.appendChild(error_element);
     });
 }
 
+//Checks if an element exists before removing it to avoid uncaught domexceptions
+function removeFromBody(elementToRemove){
+    if(document.body.contains(elementToRemove)){
+        document.body.removeChild(elementToRemove);
+    }
+}

@@ -16,15 +16,30 @@
             <h2 id="subtitle">Image-sharing from the final frontier</h2>
         </header>
         
-        <nav id="selectionsBar">
-            <!--Acts like a home/default option with infinite scroll showing random images-->
-            <button type="button" class="selections selected" id="randomButton">Random Images</button>
-            <!--Allows the user to view images between specific dates-->
-            <button type="button" class="selections" id="dateButton">Search By Date</button>
-            <!--Shows the user's liked images-->
-            <button type="button" class="selections"id="likedButton">Liked Images</button>
-        </nav>
-        
+        <div id="selectionBar">
+            <ul id="selectionsList">
+                <!--Acts like a home/default option with infinite scroll showing random images-->
+                <li><button type="button" class="selections selected" id="randomButton">Random Images</button>
+                <!--Allows the user to view images between specific dates-->
+                <li><button type="button" class="selections" id="dateButton">Search By Date</button></li>
+                <!--Shows the user's liked images-->
+                <li><button type="button" class="selections"id="likedButton">Liked Images</button></li>             
+            </ul>
+        </div>
+        <!--Gets removed and stored for when the script runs-->
+        <p class="modeExplanations" id="modeRandom">
+            Infinitely scroll through as many beautiful and random images returned from NASA's APOD API as you want!<br>
+            Note: If you reach the end of the page you may need to wait for more images to load if you scroll too fast
+        </p>
+        <p class="modeExplanations" id="modeDates">
+            Use the date pickers to select a range of dates and hit the search button to get the results.<br>
+            If only one date is chosen an appropriate date of up to 10 days will be used as the second date.<br>
+            Press the clear button to clear the dates.<br>
+            Note: The maximum range of dates is 31.
+        </p>
+        <p class="modeExplanations" id="modeLiked">
+            Does this part even work?
+        </p>
         <div id="searchBar">
             <label for="startDate">Start: </label>
             <input type="date" name="startDate" id="startDate" min="1995-06-16">
