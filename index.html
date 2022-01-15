@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Spacetagram! Image-sharing from the final frontier using NASA's Astronomy Photo Of the Day (APOD) API to get images.">
+        <meta name="keywords" content="Spacetagram, Shopify">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
         <script src="index.js" defer></script>
         <link rel="stylesheet" href="main.css">
@@ -12,43 +14,44 @@
     <body>
         <!--$.getJSON-->
         <header>
-            <h1 id="title">Spacetagram</h1>
-            <h2 id="subtitle">Image-sharing from the final frontier</h2>
+            <h1>Spacetagram</h1>
+            <h2>Image-sharing from the final frontier</h2>
+            <a href="https://github.com/Wavedoo/spacetagram">View github repository</a>
         </header>
         
         <div id="selectionBar">
-            <ul id="selectionsList">
+            <ul>
                 <!--Acts like a home/default option with infinite scroll showing random images-->
-                <li><button type="button" class="selections selected" id="randomButton">Random Images</button>
+                <li><button type="button" class="selection selected" id="randomButton">Random Images</button>
                 <!--Allows the user to view images between specific dates-->
-                <li><button type="button" class="selections" id="dateButton">Search By Date</button></li>
+                <li><button type="button" class="selection" id="dateButton">Search By Date</button></li>
                 <!--Shows the user's liked images-->
-                <li><button type="button" class="selections"id="likedButton">Liked Images</button></li>             
+                <li><button type="button" class="selection"id="likedButton">Liked Images</button></li>             
             </ul>
         </div>
 
         <!--Gets removed and stored for when the script runs-->
-        <p class="modeExplanations" id="modeRandom">
+        <p class="modeExplanation" id="modeRandom">
             Infinitely scroll through as many beautiful and random images returned from NASA's APOD API as you want!<br>
             Note: If you reach the end of the page you may need to wait for more images to load if you scroll too fast
         </p>
-        <p class="modeExplanations" id="modeDates">
+        <p class="modeExplanation" id="modeDates">
             Use the date pickers to select a range of dates and hit the search button to get the results.<br>
             If only one date is chosen an appropriate date of up to 10 days will be used as the second date.<br>
             Press the clear button to clear the dates.<br>
             Note: The maximum range of dates is 31.
         </p>
-        <p class="modeExplanations" id="modeLiked">
-            Does this part even work?
+        <p class="modeExplanation" id="modeLiked">
+            View all the images you liked!<br>
         </p>
 
         <div id="searchBar">
-            <label for="startDate" class="datePicker" >Start: </label>
+            <label for="startDate">Start date: </label>
             <input type="date" name="startDate" id="startDate" min="1995-06-16">
-            <label for="startDate" class="datePicker" >End: </label>
+            <label for="startDate">End date: </label>
             <input type="date" name="endDate" id="endDate" min="1995-06-16">
-            <button id="search">Search</button>
-            <button id="clear">Clear</button>
+            <button class="searchBarButton" id="search">Search</button>
+            <button class="searchBarButton" id="clear">Clear</button>
         </div>
 
         <div id="displayArea"></div>
