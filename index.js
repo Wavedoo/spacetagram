@@ -181,6 +181,8 @@ function like(){
         this.innerHTML = "Unlike";
         //server needed ugh I'll figure this out later
         document.cookie = "superstar=you;"
+        let allCookies = document.cookie;
+        console.log(allCookies);
 
     }else{
         this.innerHTML = "Like";
