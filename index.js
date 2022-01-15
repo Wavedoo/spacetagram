@@ -4,7 +4,10 @@ var display = document.getElementById("displayArea");
 var url = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&count=5`;
 getData(url);
 
-var likedDates = JSON.parse(localStorage.getItem("likes"));
+var likedDates = []
+if(localStorage.getItem("likes") != null){
+    likedDates = JSON.parse(localStorage.getItem("likes"));
+}
 
 var randomButton = document.getElementById("randomButton");
 var dateButton = document.getElementById("dateButton");
