@@ -66,7 +66,7 @@ button{
     border-color: black;
 }
 .selected{
-    background-color: rgba(100,100,255,1);
+    background-color: rgb(180, 50,0);
 }
 article{
     background-image: radial-gradient(rgba(255, 255, 255, 0.6), rgba(226, 226, 226, 0.6));
@@ -120,14 +120,14 @@ li{
     width: 10em;
     box-shadow: none;
     border: none;
-    background-color: rgba(150,150,255,1);
+    background-color: rgb(180, 50,0);
 }
 #toTop:hover{
-    background-color: rgba(100,100,255,1);
+    background-color: rgb(128, 50, 0);
     cursor: pointer;
 }
 #toTop:active{
-    background-color: rgba(50,50,255,1);
+    background-color: rgb(90, 50, 0);
 }
 button{
     padding: 0;
