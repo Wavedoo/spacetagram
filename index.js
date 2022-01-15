@@ -4,6 +4,10 @@ var display = document.getElementById("displayArea");
 var link = `https://api.nasa.gov/planetary/apod?api_key=${API_TOKEN}&count=10`;
 getData(link);
 
+var likedDates = [];
+likedDates = localStorage.getItem("likes");
+
+
 var randomButton = document.getElementById("randomButton");
 var dateButton = document.getElementById("dateButton");
 var likedButton = document.getElementById("likedButton");
@@ -179,13 +183,13 @@ function dateToParameter(milliseconds){
 function like(){
     if(this.innerHTML == "Like"){
         this.innerHTML = "Unlike";
-        //server needed ugh I'll figure this out later
-        document.cookie = "superstar=you;"
-        let allCookies = document.cookie;
-        console.log(allCookies);
+        likedDates.push(this.value);
+        localStorage.setItem("likes", likedDates);
+        console.log(likedDates);
 
     }else{
         this.innerHTML = "Like";
+        likedDates.remove
     }
 }
 

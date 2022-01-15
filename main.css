@@ -58,9 +58,7 @@ button{
     margin-top: 1em;
     
 }
-.datePicker {
 
-}
 .selections:hover{
     cursor: pointer;
     border-color: black;
@@ -112,7 +110,7 @@ li{
 #toTop{
     position: fixed;
     border-radius: 0.5em;
-    font-size: 1em;
+    font-size: 1.1em;
     border-radius: 1em;
     top: 90%;
     left: 3%;
@@ -121,6 +119,7 @@ li{
     box-shadow: none;
     border: none;
     background-color: rgb(180, 50,0);
+    color: white;
 }
 #toTop:hover{
     background-color: rgb(128, 50, 0);
