@@ -2,11 +2,24 @@
 html{
     background-color: rgb(123, 123, 180);
     font-size: 16px;
+    background-image: url("background2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+button{
+    color: black;
+    /* So it doesn't appear bad on Apple devices */
 }
 #title, #subtitle{
     margin: 0;
     border: 0;
     padding: 0;
+    color: white;
+}
+#subtitle{
+    padding-bottom: 1em;
 }
 #subtitle{
     font-size: 1em;
@@ -18,7 +31,7 @@ html{
     border-style: none;
     margin: auto;
     width: 100%;
-    background-color: rgb(192, 192, 231);;
+    background-color: rgba(255, 255, 255, 0.8);
     
 }
 .selections{
@@ -29,6 +42,23 @@ html{
     font-size: 1.1em;
     margin-left: 1em;
     margin-right: 1em;
+    font-weight: bold;
+    padding: 0.25em;
+
+}
+#searchBar{
+    height: 3em;
+    border-radius: 1em;
+    border-color: black;
+    border-style: none;
+    margin: auto;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-top: 1em;
+    
+}
+.datePicker {
 
 }
 .selections:hover{
@@ -39,7 +69,8 @@ html{
     background-color: rgba(100,100,255,1);
 }
 article{
-    background-image: radial-gradient(#FFFFFF, #e2e2e2);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.6), rgba(226, 226, 226, 0.6));
+    background-color: rgba(226, 226, 226, 0.6);
     border-radius: 25px;
     width: 90%;
     margin: auto;
@@ -47,6 +78,7 @@ article{
 
 }
 article>h2{
+    padding-top: 1em;
 }
 article>img{
     width: 95%;
@@ -54,7 +86,8 @@ article>img{
     height: 100%;
 }
 article>p{
-    
+    padding-left: 1em;
+    padding-right: 1em;
 }
 /* #selectionsList*/
 ul{
@@ -70,6 +103,7 @@ ul{
     transform: translateY(-50%);
 
 }
+
 li{
     float: left;
 }
@@ -100,22 +134,29 @@ button{
     margin: 0;
 }
 .likes{
-    background-color: rgb(180, 0,0);
+    background-color: rgb(180, 50,0);
     height: 3em;
     width: 6em;
+    font-size: 1.1em;
     margin-bottom: 2em;
     border-radius: 1em;
     box-shadow: none;
     border-style: none;
+    color: white;
 }
 .likes:hover{
-    background-color: maroon;
+    background-color: rgb(128, 50, 0);
     cursor: pointer;
 }
 .likes:active{
-    background-color: rgb(90,0,0);
+    background-color: rgb(90, 50, 0);
 }
 .modeExplanations{
     font-size: 1.25em;
     text-align: center;
+    color: rgb(255, 255, 255);
+}
+.datePicker{
+    font-size: 1.1em;
+    color: black;
 }

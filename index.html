@@ -26,6 +26,7 @@
                 <li><button type="button" class="selections"id="likedButton">Liked Images</button></li>             
             </ul>
         </div>
+
         <!--Gets removed and stored for when the script runs-->
         <p class="modeExplanations" id="modeRandom">
             Infinitely scroll through as many beautiful and random images returned from NASA's APOD API as you want!<br>
@@ -40,10 +41,11 @@
         <p class="modeExplanations" id="modeLiked">
             Does this part even work?
         </p>
+
         <div id="searchBar">
-            <label for="startDate">Start: </label>
+            <label for="startDate" class="datePicker" >Start: </label>
             <input type="date" name="startDate" id="startDate" min="1995-06-16">
-            <label for="startDate">End: </label>
+            <label for="startDate" class="datePicker" >End: </label>
             <input type="date" name="endDate" id="endDate" min="1995-06-16">
             <button id="search">Search</button>
             <button id="clear">Clear</button>
